@@ -1,0 +1,22 @@
+---
+description: Rules for Writing and Running Automated Tests
+globs: **/*Tests.php
+alwaysApply: false
+---
+# Rules for Writing Automated Tests
+
+When writing new tests, it is helpful to refer to old tests, but please keep our modern testing standards in mind:
+
+* Do not mock DTOs or other dumb classes (such as Doctrine entities)
+* When mocking, use PHP 8 union types to prevent linting errors, for example: `private EntityManagerInterface&MockObject $entityManager;`
+* Give tests descriptive names
+
+# Running Tests
+
+```ps
+cls; php bin/phpunit <PATH TO TEST FILE>
+```
+
+⚠ Note:
+* Beginning with `cls;` ensures that previous test runs are not mistaken for the current test run.
+* It can take up to two minutes for the tests to run! Please wait until you see the full test output before continuing.

@@ -1,0 +1,23 @@
+---
+description: How to Work a Ticket from Start to Finish
+globs: *.*
+alwaysApply: true
+---
+When asked to work a ticket from start to finish, follow these steps:
+
+1. Was a ticket number given? It should be of the form [A-Z]+-[0-9]+. If it was not given, ask for it.
+2. Was a fix version given? It should be of the form v[0-9]+\.[0-9]+. If it was not given, ask for it.
+3. Run the following command to get on the correct branch: `work-ticket <FIX VERSION> <TICKET NUMBER>`
+4. Implement the ticket according to the requirements
+   * Follow patterns established in existing, similar code files
+   * Look for opportunities to improve readability and use modern PHP features
+   * Refer to other Cursor rules, as appropriate:
+     * database-migrations.mdc - information about creating database migrations
+     * exception-handling.mdc - information about how and when to use HTTP exceptions
+     * public-vs-private-api-endpoints.mdc - information about registering endpoints
+     * modern-php-readability.mdc - general best-practices related to writing PHP
+     * symfony-vsa.mdc - guidance on following the vertical slice-ish architecture of this application
+     * testing-standards.mdc - guidance on writing & running tests
+5. Fix any errors highlighted by the IDE. If you have trouble doing so, don't be afraid to ask for help.
+6. Run all unit tests with `cls; php bin/phpunit` Fix any failing tests. Repeat until all unit tests pass.
+7. Review all changes against the ticket requirements to double-check that they have been met, and that the code follows our conventions and best practices for modern PHP development. Return to step 4 if you determine there's more work to be done.

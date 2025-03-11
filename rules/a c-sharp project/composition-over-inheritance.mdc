@@ -1,0 +1,81 @@
+---
+description: Composition Over Inheritance Guidelines
+globs: *.cs
+---
+# Composition Over Inheritance Guidelines
+
+Guidelines for favoring composition, extension methods, and static helpers over inheritance-based designs.
+
+1. **Prefer composition over inheritance**
+   - ❌ Inheritance-based design:
+     ```csharp
+     public abstract class ReportGenerator {
+         protected abstract void GenerateHeader();
+     }
+     ```
+   - ✅ Composition-based design:
+     ```csharp
+     public interface IReportSection {
+         void Generate();
+     }
+     public class ReportGenerator {
+         private readonly IReportSection HeaderGenerator;
+         public ReportGenerator(IReportSection headerGenerator) {
+             HeaderGenerator = headerGenerator;
+         }
+     }
+     ```
+
+2. **Use extension methods for behavior sharing**
+   - ❌ Inheritance for shared behavior:
+     ```csharp
+     public abstract class EntityBase {
+         public virtual string FormatName() { ... }
+     }
+     ```
+   - ✅ Extension methods:
+     ```csharp
+     public static class EntityExtensions {
+         public static string FormatName(this IEntity entity) { ... }
+     }
+     ```
+
+3. **Implement static helper classes for utility functions**
+   - ❌ Base class with utility methods:
+     ```csharp
+     public abstract class ValidationBase {
+         protected virtual bool ValidateEmail(string email) { ... }
+     }
+     ```
+   - ✅ Static helper class:
+     ```csharp
+     public static class ValidationHelpers {
+         public static bool IsValidEmail(string email) { ... }
+     }
+     ```
+
+4. **Use interfaces and dependency injection**
+   - ❌ Inheritance hierarchy:
+     ```csharp
+     public abstract class DataProcessor {
+         protected abstract void Process(Data data);
+     }
+     ```
+   - ✅ Interface-based composition:
+     ```csharp
+     public interface IDataProcessor {
+         void Process(Data data);
+     }
+     ```
+
+Benefits:
+- Improved testability through better separation of concerns
+- More flexible code structure
+- Easier to maintain and modify
+- Better adherence to SOLID principles
+- Reduced coupling between components
+
+Exceptions where inheritance might still be appropriate:
+1. Framework requirements (e.g., ASP.NET Core controllers)
+2. Clear "is-a" relationships with shared behavior
+3. Design patterns that specifically require inheritance

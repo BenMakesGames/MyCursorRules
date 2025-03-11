@@ -1,0 +1,103 @@
+---
+description: C# Naming Conventions
+globs: *.cs
+---
+# C# Naming Conventions
+
+Standards for modern C# naming conventions to maintain consistency across the codebase.
+
+1. **Constants**
+   - ❌ SCREAMING_SNAKE_CASE:
+     ```csharp
+     private const int MAX_ITEMS = 100;
+     ```
+   - ✅ PascalCase:
+     ```csharp
+     private const int MaxItems = 100;
+     ```
+
+2. **Interfaces**
+   - ❌ Missing 'I' prefix:
+     ```csharp
+     public interface Repository { }
+     ```
+   - ✅ 'I' prefix:
+     ```csharp
+     public interface IRepository { }
+     ```
+
+3. **Async Methods**
+   - ❌ Missing 'Async' suffix:
+     ```csharp
+     public async Task GetData() { }
+     ```
+   - ✅ 'Async' suffix:
+     ```csharp
+     public async Task GetDataAsync() { }
+     ```
+
+4. **Private Fields**
+   - ❌ Underscore prefix:
+     ```csharp
+     private int _myField;
+     ```
+   - ✅ PascalCase:
+     ```csharp
+     private int MyField;
+     ```
+
+5. **Boolean Members**
+   - ❌ Missing prefix:
+     ```csharp
+     public bool Visible { get; set; }
+     ```
+   - ✅ Use 'Is', 'Has', 'Can', or 'Should' prefix:
+     ```csharp
+     public bool IsVisible { get; set; }
+     public bool HasValue { get; set; }
+     public bool CanExecute { get; set; }
+     public bool ShouldProcess { get; set; }
+     ```
+
+6. **Event Handlers**
+   - ❌ Unclear naming:
+     ```csharp
+     public void ButtonClick(object sender, EventArgs e) { }
+     ```
+   - ✅ 'On' prefix:
+     ```csharp
+     public void OnButtonClick(object sender, EventArgs e) { }
+     ```
+
+7. **Collections**
+   - ❌ Singular name:
+     ```csharp
+     public List<Customer> Customer { get; set; }
+     ```
+   - ✅ Plural name:
+     ```csharp
+     public List<Customer> Customers { get; set; }
+     ```
+
+8. **Abbreviations**
+   - ❌ All caps:
+     ```csharp
+     public string GetXMLString() { }
+     public string ParseJSON() { }
+     ```
+   - ✅ Treat as words:
+     ```csharp
+     public string GetXmlString() { }
+     public string ParseJson() { }
+     ```
+
+9. **Generic Type Parameters**
+   - ❌ Poor naming:
+     ```csharp
+     public class Cache<X> { }
+     ```
+   - ✅ Use T prefix or descriptive names:
+     ```csharp
+     public class Cache<T> { }
+     public class KeyValueCache<TKey, TValue> { }
+     ```

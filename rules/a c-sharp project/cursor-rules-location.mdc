@@ -1,0 +1,45 @@
+---
+description: Cursor Rules Location
+globs: *.mdc
+---
+# Cursor Rules Location
+
+Guidelines for placing and organizing Cursor rule files in the repository.
+
+1. **File Location**
+   - ❌ Incorrect locations:
+     ```
+     rules/my-rule.mdc
+     my-rule.mdc
+     .rules/my-rule.mdc
+     ```
+   - ✅ Correct location:
+     ```
+     .cursor/rules/my-rule.mdc
+     ```
+
+2. **Directory Structure**
+   ```
+   PROJECT_ROOT/
+   +-- .cursor/
+       +-- rules/
+           +-- your-rule-name.mdc
+           +-- another-rule.mdc
+   ```
+
+3. **File Naming**
+   - Use kebab-case for filenames
+   - Always use `.mdc` extension
+   - Make names descriptive of the rule's purpose
+   - Examples:
+     ```
+     naming-conventions.mdc
+     code-style-rules.mdc
+     testing-guidelines.mdc
+     ```
+
+4. **Never Place Rules**
+   - In the project root
+   - In subdirectories outside .cursor/rules
+   - In any other location
+   - Mixed with source code files

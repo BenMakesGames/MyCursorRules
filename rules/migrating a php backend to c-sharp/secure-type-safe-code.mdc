@@ -1,0 +1,38 @@
+---
+description: Secure, Type-safe Code Practices
+globs: *.cs
+alwaysApply: false
+---
+# Secure, Type-safe Code Practices
+
+When writing code for this project, adhere to these principles:
+
+## Security First
+- Always assume API consumers may have malicious intent
+- Validate all inputs before processing
+- Never trust client-provided data
+- Perform security checks before state changes
+- Use secure defaults and fail closed
+- Avoid exposing sensitive data in responses
+
+## Type Safety
+- Enable and honor nullable reference types
+- Account for all possible code execution paths
+- Use appropriate types for data (avoid stringly-typed code)
+- Validate data at compile-time where possible
+- Make illegal states unrepresentable through type design
+
+## Code Quality
+- Prioritize security and correctness over performance
+- Optimize only after ensuring security and stability
+- Write code that is readable and maintainable
+- Use clear, intention-revealing names
+- Document security-critical sections
+
+## Modern C# Features
+- Use records for immutable data
+- Use init-only properties for immutability
+- Use pattern matching for type-safe control flow
+- Use nullable reference types for null safety
+- Use raw string literals for readable SQL
+- Use primary constructors where appropriate

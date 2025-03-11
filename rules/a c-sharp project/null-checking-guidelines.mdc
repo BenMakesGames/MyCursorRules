@@ -1,0 +1,55 @@
+---
+description: Guidelines for handling null checks in the codebase
+globs: *.cs
+---
+# Null Checking Guidelines
+
+Standards for handling null checks in C# code.
+
+1. **Use pattern matching with `is`**
+   - ❌ Equality operators:
+     ```csharp
+     if (obj != null)
+     if (obj == null)
+     ```
+   - ✅ Pattern matching:
+     ```csharp
+     if (obj is not null)
+     if (obj is null)
+     ```
+
+2. **Null-coalescing operations**
+   - ❌ Equality check:
+     ```csharp
+     var result = obj == null ? defaultValue : obj.Value;
+     ```
+   - ✅ Pattern matching:
+     ```csharp
+     var result = obj is null ? defaultValue : obj.Value;
+     ```
+
+3. **Switch expressions with null checks**
+   - ❌ Separate null check:
+     ```csharp
+     var result = obj == null
+         ? "null"
+         : obj.Type switch { ... };
+     ```
+   - ✅ Integrated pattern:
+     ```csharp
+     var result = obj switch
+     {
+         null => "null",
+         _ => obj.Type switch { ... }
+     };
+     ```
+
+4. **Required properties**
+   - ❌ Empty initialization:
+     ```csharp
+     public string Name { get; set; } = "";
+     ```
+   - ✅ Required keyword:
+     ```csharp
+     public required string Name { get; set; }
+     ```

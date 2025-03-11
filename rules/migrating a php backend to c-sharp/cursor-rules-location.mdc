@@ -1,0 +1,13 @@
+---
+description: Cursor Rules Location
+globs: *.mdc
+alwaysApply: false
+---
+# Cursor Rules Location
+
+All Cursor Rules must:
+
+1. Be placed in the `.cursor/rules` directory
+2. Use kebab-case for filenames
+3. Have the `.mdc` file extension
+4. Have names descriptive of their purpose

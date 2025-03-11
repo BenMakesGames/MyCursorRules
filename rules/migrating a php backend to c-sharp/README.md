@@ -1,0 +1,1 @@
+These are some rules I made for a personal project which was started in 2019 in Symfony/PHP, and which I really wish was in C#, because dang.

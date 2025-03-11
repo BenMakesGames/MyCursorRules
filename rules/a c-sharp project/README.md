@@ -1,0 +1,4 @@
+Two notes:
+
+1. Cursor has a combination of bugs and possibly-intentional-behaviors that make it difficult to use the Cursor AI to modify its own rules files, a practice proposed by [You are using Cursor AI incorrectly..., by Geoffrey Huntley](https://ghuntley.com/stdlib/) (and which I agree feels incredible & correct). Maybe Cursor will finally sort that out one day; in the meanwhile, you may find that the `cursor-rules-location.mdc` is less useful than you'd like.
+2. Probably because I started with ghuntley's cursor rules location, these rules ended up using emojis and ASCII art a lot. These days I try to avoid that, partly to give the LLM fewer tokens to parse, but also because it just doesn't feel necessary. But who knows: that ghuntley seems like a smart dude. Try a bunch of different stuff out and see what works for you.

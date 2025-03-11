@@ -1,0 +1,60 @@
+---
+description: Entity Framework Core Best Practices
+globs: *.cs
+alwaysApply: false
+---
+# Entity Framework Core Best Practices
+
+When using Entity Framework Core in this project, adhere to these principles:
+
+## Data Access Patterns
+- Use explicit includes with `.Include()` only when loading full entities
+- Avoid N+1 query problems by including related data upfront
+- Use projection with `.Select()` when you only need specific fields
+- Use `.AsNoTracking()` when you don't need to track changes
+- Use `.AsSplitQuery()` for complex queries with multiple includes
+- Project directly into DTOs using `.Select()` to avoid loading unnecessary data
+- Don't use `.Include()` when projecting into DTOs - EF Core will optimize the query automatically
+
+## Entity Design
+- Use `required` keyword for required properties instead of default values
+- Avoid virtual navigation properties unless lazy loading is specifically needed
+- Use appropriate data types (e.g., `DateTime` for dates, not strings)
+- Keep entities focused and single-purpose
+- Use expression-bodied members for DbSet properties in DbContext (e.g., `public DbSet<User> Users => Set<User>();`)
+
+## Entity Configuration
+- Use nested `Configuration` classes for entity configuration (e.g., `User.Configuration`)
+- Use fluent configuration instead of data annotations
+- Keep all configuration in the `Configuration` class
+- Use `ApplyConfigurationsFromAssembly()` in DbContext to automatically find configurations
+- Configure indexes, relationships, and constraints in the `Configuration` class
+
+## Performance
+- Use appropriate indexes (configured in `Configuration` classes)
+- Avoid loading unnecessary data by projecting into DTOs
+- Use compiled queries for frequently executed queries
+- Consider using raw SQL for complex queries
+- Use bulk operations for large datasets
+- When using pagination, project into DTOs before applying Skip/Take to optimize the query
+
+## Security
+- Never expose sensitive data in entities
+- Use DTOs for API responses
+- Validate all inputs before saving
+- Use parameterized queries (EF Core handles this automatically)
+- Implement proper authorization checks before data access
+
+## Code Organization
+- Keep entity configurations in nested `Configuration` classes
+- Use constants for magic strings/numbers
+- Document complex queries or business rules
+- Use meaningful names for DbSet properties
+- Keep entity classes clean and focused on the data model
+- Use extension methods for common query patterns (e.g., pagination)
+
+## Testing
+- Use in-memory provider for unit tests
+- Test both success and failure scenarios
+- Verify query performance in tests
+- Test entity configurations
